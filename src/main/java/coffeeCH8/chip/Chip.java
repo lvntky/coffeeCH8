@@ -13,9 +13,9 @@ public class Chip {
     private int delayTimer;
 
     private byte[] keys;
-    private byte[] screenResolution;
+    private byte[] display;
 
-    public Chip() {
+    public void init() {
         memory = new char[4096]; // 4kB;
         V = new char[16];
         I = 0x0;
@@ -28,7 +28,8 @@ public class Chip {
         delayTimer = 0;
 
         keys = new byte[16];
-        screenResolution = new byte[64 * 32];
+        display = new byte[64 * 32];
+        display[640] = 1;
     }
 
     public void run() {
@@ -40,5 +41,9 @@ public class Chip {
         // decode
         // execute
 
+    }
+
+    public byte[] getDisplay() {
+        return display;
     }
 }
